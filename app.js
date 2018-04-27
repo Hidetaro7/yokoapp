@@ -3,9 +3,11 @@ const app = express();
 const fs = require("fs");
 
 app.get("/", function (req, res) {
-	fs.readFile("./data.txt", "utf-8", function (err, txt) {
-		res.send(txt);
-		console.log(txt)
+	fs.readFile("./data.json", "utf-8", function (err, data) {
+		if(!err) {
+			res.status(200).json(data);
+			console.log(data);
+		}
 	});
 	
 })
